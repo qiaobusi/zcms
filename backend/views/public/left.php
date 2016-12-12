@@ -41,9 +41,9 @@ use yii\helpers\Url;
 				    </span>
 				  </a>
 				  <ul class="treeview-menu">
-				    <li class="active"><a href="<?php echo Url::to(['manager/index']); ?>"><i class="fa fa-circle-o"></i>管理员</a></li>
-				    <li><a href="<?php echo Url::to(['auth/index']); ?>"><i class="fa fa-circle-o"></i>权限</a></li>
+				    <li><a href="<?php echo Url::to(['manager/index']); ?>"><i class="fa fa-circle-o"></i>管理员</a></li>
 				    <li><a href="<?php echo Url::to(['role/index']); ?>"><i class="fa fa-circle-o"></i>角色</a></li>
+				    <li><a href="<?php echo Url::to(['auth/index']); ?>"><i class="fa fa-circle-o"></i>权限</a></li>
 				  </ul>
 				</li>
 				<li class="treeview">

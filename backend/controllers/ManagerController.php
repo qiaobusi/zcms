@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use backend\controllers\BaseCenterController;
 use backend\models\Manager;
+use backend\models\Role;
 use backend\utils\CommonFunc;
 
 use yii\data\Pagination;
@@ -17,7 +18,7 @@ class ManagerController extends BaseCenterController
     public function actionIndex()
     {
     	$query = Manager::find();
-    		$pagination = new Pagination([
+    	$pagination = new Pagination([
             'defaultPageSize' => 10,
             'totalCount' => $query->count(),
         ]);
@@ -124,7 +125,51 @@ class ManagerController extends BaseCenterController
     				}
     		}
     }
+
+    public function actionRole()
+    {
+            $id = Yii::$app->request->get('id');
+            $manager = Manager::findOne($id);
+            
+            $query = Role::find();
+            $roles = $query->orderBy('id')->all();
+            
+            $manager_roles = Yii::$app->db->createCommand('SELECT role_id FROM {{%manager_role}} WHERE manager_id = :manager_id')->bindValue(':manager_id', $id)->queryColumn();
+            
+            return $this->render('role', [
+                'manager' => $manager,
+                'roles' => $roles,
+                'manager_roles' => $manager_roles
+            ]);
+    }
     
+    public function actionSaveRole()
+    {
+        if (Yii::$app->request->isAjax) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+             
+            $post = Yii::$app->request->post();
+            
+            $manager_id = $post['manager_id'];
+            $role_id = $post['role_id'];
+            
+            $data = [];
+            foreach ($role_id as $v) {
+                $one = [$manager_id, $v];
+                array_push($data, $one);
+            }
+            
+            $db = Yii::$app->db;
+            
+            $db->createCommand()->delete('{{%manager_role}}', 'manager_id = ' . $manager_id)->execute();
+            $result = $db->createCommand()->batchInsert('{{%manager_role}}', ['manager_id', 'role_id'], $data)->execute();
+            if ($result) {
+                return ['status' => 1, 'info' => '保存成功', 'data' => null];
+            } else {
+                return ['status' => 0, 'info' => '保存失败', 'data' => null];
+            }
+        }
+    }
    
 
 }

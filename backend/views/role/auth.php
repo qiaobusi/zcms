@@ -36,7 +36,7 @@ use yii\widgets\LinkPager;
       <div class="col-sm-12">
         <div class="box box-default">
 			      <div class="box-header">
-              <h3 class="box-title">管理员 > 角色 > 权限 [<?php echo $role->name; ?>]</h3>
+              <h3 class="box-title">角色 [<?php echo $role->name; ?>]</h3>
               <div class="box-tools">
               </div>
             </div>

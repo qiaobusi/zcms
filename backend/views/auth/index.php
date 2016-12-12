@@ -37,7 +37,7 @@ use yii\widgets\LinkPager;
 			      <div class="box-header">
               <h3 class="box-title">权限</h3>
               <div class="box-tools">
-                <button type="button" class="btn btn-sm btn-primary" onclick="add()">添加</button>
+                <button type="button" class="btn btn-sm btn-primary" onclick="add()"><span class="glyphicon glyphicon-plus"></span>&nbsp;添加</button>
               </div>
             </div>
             <!-- /.box-header -->
@@ -65,7 +65,7 @@ use yii\widgets\LinkPager;
               </table>
             </div>
             <div class="box-footer clearfix">
-              <? echo LinkPager::widget([
+              <?php echo LinkPager::widget([
               		'pagination' => $pagination,
               		'options' => [
               				'class' => 'pagination pagination-sm no-margin pull-right'

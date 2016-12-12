@@ -37,7 +37,7 @@ use yii\widgets\LinkPager;
 			      <div class="box-header">
               <h3 class="box-title">管理员</h3>
               <div class="box-tools">
-                <button type="button" class="btn btn-sm btn-primary" onclick="add()">添加</button>
+                <button type="button" class="btn btn-sm btn-primary" onclick="add()"><span class="glyphicon glyphicon-plus"></span>&nbsp;添加</button>
               </div>
             </div>
             <!-- /.box-header -->
@@ -47,14 +47,15 @@ use yii\widgets\LinkPager;
                   <th style="width: 50px">ID</th>
                   <th>用户名称</th>
                   <th>添加时间</th>
-                  <th style="width: 150px; text-align:right;">操作</th>
+                  <th style="width: 200px; text-align:right;">操作</th>
                 </tr>
                 <?php foreach ($managers as $manager): ?>
                 <tr>
                   <td><?php echo $manager->id; ?></td>
                   <td><?php echo $manager->username; ?></td>
                   <td><?php echo date('Y-m-d H:i', $manager->time); ?></td>
-                  <td style="width: 150px; text-align:right;">
+                  <td style="width: 200px; text-align:right;">
+                    <button type="button" class="btn btn-sm btn-info" data-url="<?php echo Url::to(['manager/role', 'id' => $manager->id]); ?>" onclick="role(this)">角色</button>&nbsp;
                   	<button type="button" class="btn btn-sm btn-info" data-url="<?php echo Url::to(['manager/edit', 'id' => $manager->id]); ?>" onclick="edit(this)">修改</button>&nbsp;
                   	<button type="button" class="btn btn-sm btn-danger" onclick="del(<?php echo $manager->id; ?>)">删除</button>
                   </td>
@@ -63,7 +64,7 @@ use yii\widgets\LinkPager;
               </table>
             </div>
             <div class="box-footer clearfix">
-              <? echo LinkPager::widget([
+              <?php echo LinkPager::widget([
               		'pagination' => $pagination,
               		'options' => [
               				'class' => 'pagination pagination-sm no-margin pull-right'
@@ -88,6 +89,11 @@ use yii\widgets\LinkPager;
 				window.location.href = "<?php echo Url::to(['manager/add']); ?>";
 		}
 		
+    function role(obj) {
+        var url = $(obj).data('url');
+        window.location.href = url;
+    }
+
 		function edit(obj) {
 				var url = $(obj).data('url');
 				window.location.href = url;

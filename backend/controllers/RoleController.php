@@ -132,7 +132,7 @@ class RoleController extends BaseCenterController
     	$query = Auth::find();
     	$auths = $query->orderBy('id')->all();
     	
-    	$role_auths = Yii::$app->db->createCommand('SELECT auth_id FROM wjc_role_auth WHERE role_id = :role_id')->bindValue(':role_id', $id)->queryColumn();
+    	$role_auths = Yii::$app->db->createCommand('SELECT auth_id FROM {{%role_auth}} WHERE role_id = :role_id')->bindValue(':role_id', $id)->queryColumn();
     	
     	return $this->render('auth', [
     		'role' => $role,
@@ -159,28 +159,14 @@ class RoleController extends BaseCenterController
     		
     		$db = Yii::$app->db;
     		
-    		$db->createCommand()->delete('wjc_role_auth', 'role_id = ' . $role_id)->execute();
-    		$result = $db->createCommand()->batchInsert('wjc_role_auth', ['role_id', 'auth_id'], $data)->execute();
+    		$db->createCommand()->delete('{{%role_auth}}', 'role_id = ' . $role_id)->execute();
+    		$result = $db->createCommand()->batchInsert('{{%role_auth}}', ['role_id', 'auth_id'], $data)->execute();
     		if ($result) {
     			return ['status' => 1, 'info' => '保存成功', 'data' => null];
     		} else {
     			return ['status' => 0, 'info' => '保存失败', 'data' => null];
     		}
     	}
-    }
-    
-    public function actionQwert()
-    {
-    	$db = Yii::$app->db;
-    	
-    	for ($i = 0; $i < 500; $i++) {
-    		$db->createCommand()->insert('wjc_test', [
-			    'title' => 'dingdong',
-			    'content' => 'i am qiao busi',
-			])->execute();
-    	}
-    	
-    	return 100;
     }
 		
 		
