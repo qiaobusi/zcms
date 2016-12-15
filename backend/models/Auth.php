@@ -47,17 +47,4 @@ class Auth extends ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'name' => '权限名称',
-            'label' => '权限标签',
-            'url' => '权限链接',
-            'time' => '添加时间',
-        ];
-    }
 }

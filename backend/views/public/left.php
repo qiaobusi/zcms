@@ -46,19 +46,18 @@ use yii\helpers\Url;
 				    <li><a href="<?php echo Url::to(['auth/index']); ?>"><i class="fa fa-circle-o"></i>权限</a></li>
 				  </ul>
 				</li>
-				<li class="treeview">
+				<li class="active treeview">
 				  <a href="#">
-				    <i class="fa fa-files-o"></i>
-				    <span>Layout Options</span>
+				    <i class="fa fa-dashboard"></i> <span>借款列表</span>
 				    <span class="pull-right-container">
-				      <span class="label label-primary pull-right">4</span>
+				      <i class="fa fa-angle-left pull-right"></i>
 				    </span>
 				  </a>
 				  <ul class="treeview-menu">
-				    <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-				    <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-				    <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-				    <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+				    <li><a href="<?php echo Url::to(['deal-cate/index']); ?>"><i class="fa fa-circle-o"></i>借款分类</a></li>
+				    <li><a href="<?php echo Url::to(['deal-type/index']); ?>"><i class="fa fa-circle-o"></i>借款用途</a></li>
+				    <li><a href="<?php echo Url::to(['deal-agency/index']); ?>"><i class="fa fa-circle-o"></i>担保机构</a></li>
+				    <li><a href="<?php echo Url::to(['deal/index']); ?>"><i class="fa fa-circle-o"></i>借款</a></li>
 				  </ul>
 				</li>
 				<li>

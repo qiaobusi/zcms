@@ -22,8 +22,9 @@ use yii\helpers\Url;
         <small>Version 2.0</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li>管理员</li>
+        <li>权限</li>
+        <li class="active">添加</li>
       </ol>
     </section>
 
@@ -39,24 +40,21 @@ use yii\helpers\Url;
             	<input name="_csrf-backend" type="hidden" id="_csrf" value="<?php echo Yii::$app->request->csrfToken; ?>">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="username" class="col-sm-2 control-label">权限名称</label>
-
+                  <label for="name" class="col-sm-2 control-label">权限名称</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="name" name="Auth[name]" placeholder="权限名称">
                     <span class="help-block" style="color:#f00;"></span>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="username" class="col-sm-2 control-label">权限标签</label>
-
+                  <label for="label" class="col-sm-2 control-label">权限标签</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="label" name="Auth[label]" placeholder="权限标签，例如manager-index">
                     <span class="help-block" style="color:#f00;"></span>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="username" class="col-sm-2 control-label">权限链接</label>
-
+                  <label for="url" class="col-sm-2 control-label">权限链接</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="url" name="Auth[url]" placeholder="权限链接，例如manager/index">
                     <span class="help-block" style="color:#f00;"></span>
@@ -96,7 +94,7 @@ use yii\helpers\Url;
 									$('#label').parent().find('.help-block').html('请输入权限标签');
 									return false;
 							}
-							var url = $.trim($('#label').val());
+							var url = $.trim($('#url').val());
 							if (url == '') {
 									$('#url').parents('.form-group').addClass('has-error');
 									$('#url').parent().find('.help-block').html('请输入权限链接');

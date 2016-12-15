@@ -22,8 +22,9 @@ use yii\helpers\Url;
         <small>Version 2.0</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li>管理员</li>
+        <li>角色</li>
+        <li class="active">修改</li>
       </ol>
     </section>
 
@@ -41,7 +42,6 @@ use yii\helpers\Url;
               <div class="box-body">
                 <div class="form-group">
                   <label for="name" class="col-sm-2 control-label">角色名称</label>
-
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="name" name="Role[name]" placeholder="角色名称" value="<?php echo $role->name; ?>">
                     <span class="help-block" style="color:#f00;"></span>

@@ -22,8 +22,9 @@ use yii\helpers\Url;
         <small>Version 2.0</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li>管理员</li>
+        <li>管理员</li>
+        <li class="active">添加</li>
       </ol>
     </section>
 
@@ -40,7 +41,6 @@ use yii\helpers\Url;
               <div class="box-body">
                 <div class="form-group">
                   <label for="username" class="col-sm-2 control-label">用户名称</label>
-
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="username" name="Manager[username]" placeholder="用户名称">
                     <span class="help-block" style="color:#f00;"></span>
@@ -48,7 +48,6 @@ use yii\helpers\Url;
                 </div>
                 <div class="form-group">
                   <label for="password" class="col-sm-2 control-label">登陆密码</label>
-
                   <div class="col-sm-10">
                     <input type="password" class="form-control" id="password" name="Manager[password]" placeholder="登陆密码">
                     <span class="help-block" style="color:#f00;"></span>

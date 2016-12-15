@@ -22,8 +22,9 @@ use yii\helpers\Url;
         <small>Version 2.0</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li>管理员</li>
+        <li>权限</li>
+        <li class="active">修改</li>
       </ol>
     </section>
 
@@ -35,30 +36,28 @@ use yii\helpers\Url;
             <div class="box-header with-border">
               <h3 class="box-title">权限</h3>
             </div>
-            <form class="form-horizontal" id="form" action="<?php echo Url::to(['auth/insert']); ?>">
+            <form class="form-horizontal" id="form" action="<?php echo Url::to(['auth/save']); ?>">
             	<input name="_csrf-backend" type="hidden" id="_csrf" value="<?php echo Yii::$app->request->csrfToken; ?>">
+            	<input name="id" type="hidden" id="id" value="<?php echo $id; ?>" >
               <div class="box-body">
                 <div class="form-group">
-                  <label for="username" class="col-sm-2 control-label">权限名称</label>
-
+                  <label for="name" class="col-sm-2 control-label">权限名称</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="name" name="Auth[name]" placeholder="权限名称" value="<?php echo $auth->name; ?>">
                     <span class="help-block" style="color:#f00;"></span>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="username" class="col-sm-2 control-label">权限标签</label>
-
+                  <label for="label" class="col-sm-2 control-label">权限标签</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="label" name="Auth[label]" placeholder="权限标签，例如manager-index" value="<?php echo $auth->label; ?>">
                     <span class="help-block" style="color:#f00;"></span>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="username" class="col-sm-2 control-label">权限链接</label>
-
+                  <label for="url" class="col-sm-2 control-label">权限链接</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="url" name="Auth[url]" placeholder="权限链接，例如manager/index" value="<?php echo $auth->label; ?>">
+                    <input type="text" class="form-control" id="url" name="Auth[url]" placeholder="权限链接，例如manager/index" value="<?php echo $auth->url; ?>">
                     <span class="help-block" style="color:#f00;"></span>
                   </div>
                 </div>
@@ -84,6 +83,8 @@ use yii\helpers\Url;
 					});
 					
 					$('#saveForm').click(function(){
+							var id = $('#id').val();
+						
 							var name = $.trim($('#name').val());
 							if (name == '') {
 									$('#name').parents('.form-group').addClass('has-error');
@@ -96,7 +97,7 @@ use yii\helpers\Url;
 									$('#label').parent().find('.help-block').html('请输入权限标签');
 									return false;
 							}
-							var url = $.trim($('#label').val());
+							var url = $.trim($('#url').val());
 							if (url == '') {
 									$('#url').parents('.form-group').addClass('has-error');
 									$('#url').parent().find('.help-block').html('请输入权限链接');
@@ -107,6 +108,7 @@ use yii\helpers\Url;
 									url: $('#form').attr('action'),
 									type: 'POST',
 									data: {
+											'id': id,
 											'Auth[name]': name,
 											'Auth[label]': label,
 											'Auth[url]': url,

@@ -57,8 +57,8 @@ class RoleController extends BaseCenterController
     				return ['status' => 1, 'info' => '保存成功', 'data' => null];
     			} else {
     				$error = $model->firstErrors;
-    				$info = CommonFunc::getErrorInfo($error);
-    				return ['status' => 0, 'info' => $info, 'data' => 'aaaaa'];
+    				$info = count($error) > 0 ? CommonFunc::getErrorInfo($error) : '保存失败';
+    				return ['status' => 0, 'info' => $info, 'data' => null];
     			}
     		} else {
     			$error = $model->firstErrors;
@@ -96,8 +96,8 @@ class RoleController extends BaseCenterController
     				return ['status' => 1, 'info' => '修改成功', 'data' => null];
     			} else {
     				$error = $model->firstErrors;
-    				$info = CommonFunc::getErrorInfo($error);
-    				return ['status' => 0, 'info' => $info, 'data' => 'aaaaa'];
+    				$info = count($error) > 0 ? CommonFunc::getErrorInfo($error) : '修改失败';
+    				return ['status' => 0, 'info' => $info, 'data' => null];
     			}
     		} else {
     			$error = $model->firstErrors;

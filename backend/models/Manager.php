@@ -41,18 +41,5 @@ class Manager extends ActiveRecord
             
         ];
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'username' => '用户名称',
-            'password' => '登陆密码',
-            'time' => '添加时间',
-        ];
-    }
     
 }

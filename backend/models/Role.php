@@ -33,18 +33,6 @@ class Role extends ActiveRecord
             ['name', 'unique', 'message' => '角色名称存在'],
         ];
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'name' => '角色名称',
-            'time' => '添加时间',
-        ];
-    }
     
     public function getAuths()
     {
