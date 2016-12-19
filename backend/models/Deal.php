@@ -49,7 +49,7 @@ class Deal extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'wjc_deal';
+        return '{{%deal}}';
     }
 
     /**

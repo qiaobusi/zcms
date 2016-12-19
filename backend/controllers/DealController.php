@@ -44,7 +44,6 @@ class DealController extends BaseCenterController
 		
 		$dealAgencys = DealAgency::findAll(['is_effect' => 1]);
 		
-		
 		return $this->render('add', [
 				'dealCates' => $dealCates,
 				'dealTypes' => $dealTypes,
@@ -58,7 +57,7 @@ class DealController extends BaseCenterController
 			Yii::$app->response->format = Response::FORMAT_JSON;
 		
 			$data = Yii::$app->request->post();
-		
+			return ['status' => 0, 'info' => $data, 'data' => null];
 			$model = new Deal();
 			$model->load($data);
 			if ($model->validate()) {

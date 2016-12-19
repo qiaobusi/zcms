@@ -32,7 +32,7 @@ use yii\helpers\Html;
   <?= Html::jsFile('https://oss.maxcdn.com/respond/1.4.2/respond.min.js', ['condition' => 'lt IE 9']) ?>
   
   <!-- jQuery 2.2.3 -->
-	<?= Html::jsFile('@web/assets/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') ?>
+  <?= Html::jsFile('@web/assets/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') ?>
   
 </head>
 <body class="hold-transition skin-blue sidebar-mini">

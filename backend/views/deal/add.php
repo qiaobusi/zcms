@@ -251,8 +251,30 @@ use yii\helpers\Url;
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  
+  <!-- datepicker -->
+  <?= Html::jsFile('@web/assets/AdminLTE/plugins/datepicker/bootstrap-datepicker.js') ?>
+  <!-- timepicker -->
+  <?= Html::jsFile('@web/assets/AdminLTE/plugins/timepicker/bootstrap-timepicker.min.js') ?>
+  <!-- daterangepicker -->
+  <?= Html::jsFile('@web/assets/AdminLTE/plugins/daterangepicker/moment.min.js') ?>
+  <?= Html::jsFile('@web/assets/AdminLTE/plugins/daterangepicker/daterangepicker.js') ?>
+  <!-- datepicker -->
+  <?= Html::cssFile('@web/assets/AdminLTE/plugins/datepicker/datepicker3.css') ?>
+  <!-- timepicker -->
+  <?= Html::cssFile('@web/assets/AdminLTE/plugins/timepicker/bootstrap-timepicker.min.css') ?>
+  <!-- daterangepicker -->
+  <?= Html::cssFile('@web/assets/AdminLTE/plugins/daterangepicker/daterangepicker.css') ?>
+  
   <script type="text/javascript">
   		$(function(){
+					
+					$('#start_time').daterangepicker({
+						timePicker: true, 
+						timePickerIncrement: 5, 
+						format: 'YYYY-MM-DD HH:mm:ss'
+					});
+  	  		
 					$('#resetForm').click(function(){
 							
 					});
