@@ -57,12 +57,21 @@ class DealController extends BaseCenterController
 			Yii::$app->response->format = Response::FORMAT_JSON;
 		
 			$data = Yii::$app->request->post();
-			return ['status' => 0, 'info' => $data, 'data' => null];
+			if (!empty($data['Deal']['start_time'])) {
+				$array = explode(' ', $data['Deal']['start_time']);
+				$dateArray = explode('-', $array[0]);
+				$timeArray = explode(':', $array[1]);
+				
+				$data['Deal']['start_time'] = mktime($timeArray[0], $timeArray[1], 0, $dateArray[1], $dateArray[2], $dateArray[0]);
+			}
+			
 			$model = new Deal();
 			$model->load($data);
 			if ($model->validate()) {
-				$model->time = time();
-		
+				
+				$model->create_time = time();
+				$model->update_time = time();
+				
 				$result = $model->insert();
 		
 				if ($result) {

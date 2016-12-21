@@ -30,7 +30,7 @@ class m161212_093011_create_wjc_deal_table extends Migration
         	'rate' => $this->decimal(10, 2)->notNull()->comment('年化利率'),
         	'is_recommend' => $this->smallInteger(1)->defaultValue(0)->comment('是否推荐'),
         	'start_time' => $this->integer()->comment('开始投资时间'),
-        	'deal_status' => $this->smallInteger(1)->defaultValue(0)->comment('状态：0待等材料，1进行中，2满标，3流标，4还款中，5已还清'),
+        	'deal_status' => $this->smallInteger(1)->defaultValue(0)->comment('状态：0等待材料，1进行中，2满标，3流标，4还款中，5已还清'),
         	'enddate' => $this->integer()->comment('筹标期限'),
         	'services_fee' => $this->decimal(10, 0)->notNull()->comment('服务费率'),
         	'loantype' => $this->smallInteger(1)->notNull()->comment('还款方式：0等额本息，1付息还本，2到期本息'),

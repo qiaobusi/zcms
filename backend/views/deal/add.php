@@ -57,6 +57,7 @@ use yii\helpers\Url;
                   <label for="cate_id" class="col-sm-2 control-label">借款分类</label>
                   <div class="col-sm-10">
                     <select id="cate_id" class="form-control" name="Deal[cate_id]">
+                        <option value="0">请选择</option>
                      	<?php foreach ($dealCates as $dealCate): ?>
 	                    	<option value="<?php echo $dealCate->id; ?>"><?php echo $dealCate->name; ?></option>
 	                    <?php endforeach; ?>
@@ -68,6 +69,7 @@ use yii\helpers\Url;
                   <label for="type_id" class="col-sm-2 control-label">借款用途</label>
                   <div class="col-sm-10">
                     <select id="type_id" class="form-control" name="Deal[type_id]">
+                        <option value="0">请选择</option>
 	                    <?php foreach ($dealTypes as $dealType): ?>
 	                    	<option value="<?php echo $dealType->id; ?>"><?php echo $dealType->name; ?></option>
 	                    <?php endforeach; ?>
@@ -172,8 +174,13 @@ use yii\helpers\Url;
                 </div>
                 <div class="form-group">
                   <label for="start_time" class="col-sm-2 control-label">开始投资时间</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="start_time" name="Deal[start_time]" placeholder="开始投资时间">
+                  <div class="col-sm-10" style="padding-right:5px;">
+                    <div class="input-group">
+	                  <div class="input-group-addon">
+	                    <i class="fa fa-clock-o"></i>
+	                  </div>
+	                  <input type="text" class="form-control" id="start_time" name="Deal[start_time]" placeholder="yyyy-mm-dd hh:ii">
+                	</div>
                     <span class="help-block" style="color:#f00;"></span>
                   </div>
                 </div>
@@ -237,7 +244,6 @@ use yii\helpers\Url;
                     <span class="help-block" style="color:#f00;"></span>
                   </div>
                 </div>
-                
               </div>
               <div class="box-footer" style="text-align:right;">
                 <button type="button" class="btn btn-sm btn-default" id="resetForm">清空</button>&nbsp;
@@ -251,29 +257,21 @@ use yii\helpers\Url;
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  
-  <!-- datepicker -->
-  <?= Html::jsFile('@web/assets/AdminLTE/plugins/datepicker/bootstrap-datepicker.js') ?>
-  <!-- timepicker -->
-  <?= Html::jsFile('@web/assets/AdminLTE/plugins/timepicker/bootstrap-timepicker.min.js') ?>
-  <!-- daterangepicker -->
-  <?= Html::jsFile('@web/assets/AdminLTE/plugins/daterangepicker/moment.min.js') ?>
-  <?= Html::jsFile('@web/assets/AdminLTE/plugins/daterangepicker/daterangepicker.js') ?>
-  <!-- datepicker -->
-  <?= Html::cssFile('@web/assets/AdminLTE/plugins/datepicker/datepicker3.css') ?>
-  <!-- timepicker -->
-  <?= Html::cssFile('@web/assets/AdminLTE/plugins/timepicker/bootstrap-timepicker.min.css') ?>
-  <!-- daterangepicker -->
-  <?= Html::cssFile('@web/assets/AdminLTE/plugins/daterangepicker/daterangepicker.css') ?>
+    
+  <!-- datetimepicker -->
+  <?= Html::jsFile('@web/assets/AdminLTE/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js') ?>
+  <?= Html::jsFile('@web/assets/AdminLTE/plugins/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js') ?>
+  <?= Html::cssFile('@web/assets/AdminLTE/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css') ?>
   
   <script type="text/javascript">
   		$(function(){
-					
-					$('#start_time').daterangepicker({
-						timePicker: true, 
-						timePickerIncrement: 5, 
-						format: 'YYYY-MM-DD HH:mm:ss'
-					});
+					$("#start_time").datetimepicker({
+						language: 'zh-CN',
+				        format: "yyyy-mm-dd hh:ii",
+				        autoclose: true,
+				        todayBtn: false,
+				        minuteStep: 10,
+				    });
   	  		
 					$('#resetForm').click(function(){
 							
@@ -300,7 +298,7 @@ use yii\helpers\Url;
 									dataType: 'JSON',
 									success: function(data) {
 											if (data.status == 1) {
-													window.location.href = '<?php echo Url::to(['auth/index']); ?>';
+													window.location.href = '<?php echo Url::to(['deal/index']); ?>';
 											} else {
 													console.info(data.info);
 													showAlert('提示', data.info, null);

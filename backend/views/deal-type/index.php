@@ -54,7 +54,7 @@ use yii\widgets\LinkPager;
                 <tr>
                   <td><?php echo $dealType->id; ?></td>
                   <td><?php echo $dealType->name; ?></td>
-                  <td><?php if ($dealType->is_effect == 0) { ?>否<?php }else{ ?>是<?php } ?></td>
+                  <td><?php if ($dealType->is_effect == 0): ?>否<?php else: ?>是<?php endif; ?></td>
                   <td><?php echo date('Y-m-d H:i', $dealType->time); ?></td>
                   <td style="width: 150px; text-align:right;">
                   	<button type="button" class="btn btn-sm btn-info" data-url="<?php echo Url::to(['deal-type/edit', 'id' => $dealType->id]); ?>" onclick="edit(this)">修改</button>&nbsp;

@@ -45,8 +45,12 @@ use yii\widgets\LinkPager;
               <table class="table table-bordered table-striped">
                 <tr>
                   <th style="width: 50px">ID</th>
-                  <th>项目名称</th>
-                  <th>权限标签</th>
+                  <th>借款名称</th>
+                  <th>借款金额</th>
+                  <th>借款期限</th>
+                  <th>年化利率</th>
+                  <th>借款状态</th>
+                  <th>还款方式</th>
                   <th>添加时间</th>
                   <th style="width: 150px; text-align:right;">操作</th>
                 </tr>
@@ -54,8 +58,12 @@ use yii\widgets\LinkPager;
                 <tr>
                   <td><?php echo $deal->id; ?></td>
                   <td><?php echo $deal->name; ?></td>
-                  <td><?php echo $deal->label; ?></td>
-                  <td><?php echo date('Y-m-d H:i', $deal->create_time); ?></td>
+                  <td><?php echo $deal->borrow_amount/10000; ?>万元</td>
+                  <td><?php echo $deal->repay_time; ?><?php if ($deal->repay_time_type == 0): ?>天<?php elseif ($deal->repay_time_type == 1): ?>个月<?php endif; ?></td>
+                  <td><?php echo $deal->rate; ?>%</td>
+                  <td><?php if ($deal->deal_status == 0): ?>等待材料<?php elseif ($deal->deal_status == 1): ?>进行中<?php elseif ($deal->deal_status == 2): ?>满标<?php elseif ($deal->deal_status == 3): ?>流标<?php elseif ($deal->deal_status == 4): ?>还款中<?php elseif ($deal->deal_status == 5): ?>已还清<?php endif; ?></td>
+                  <td><?php if ($deal->loantype == 0): ?>等额本息<?php elseif ($deal->loantype == 1): ?>付息还本<?php elseif ($deal->loantype == 2): ?>到期本息<?php endif; ?></td>
+                  <td><?php echo date('Y-m-d H:i', $deal->start_time); ?></td>
                   <td style="width: 150px; text-align:right;">
                   	<button type="button" class="btn btn-sm btn-info" data-url="<?php echo Url::to(['deal/edit', 'id' => $deal->id]); ?>" onclick="edit(this)">修改</button>&nbsp;
                   	<button type="button" class="btn btn-sm btn-danger" onclick="del(<?php echo $deal->id; ?>)">删除</button>

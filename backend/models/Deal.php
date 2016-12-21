@@ -111,7 +111,7 @@ class Deal extends \yii\db\ActiveRecord
         	['is_recommend', 'in', 'range' => [0, 1], 'message' => '是否推荐错误'],
         		
         	['start_time', 'required', 'message' => '开始投资时间必须'],
-        	['start_time', 'datetime', 'message' => '开始投资时间为时间类型'],
+        	['start_time', 'integer', 'message' => '开始投资时间为整数'],
         		
         	['deal_status', 'required', 'message' => '借款状态必须'],
         	['deal_status', 'in', 'range' => [0, 1, 2, 3, 4, 5], 'message' => '借款状态错误'],
