@@ -127,6 +127,13 @@ class Deal extends \yii\db\ActiveRecord
         	
         	['loantype', 'required', 'message' => '还款方式必须'],
         	['loantype', 'in', 'range' => [0, 1, 2], 'message' => '还款方式错误'],
+        		
+        		
+        	//[['user_id', 'name', 'cate_id', 'type_id', 'agency_id', 'warrant', 'borrow_amount', 'repay_time', 'repay_time_type', 'min_loan_money', 'max_loan_money', 'rate', 'services_fee', 'loantype'], 'required'],
+        	//[['user_id', 'cate_id', 'type_id', 'agency_id', 'warrant', 'is_effect', 'repay_time', 'repay_time_type', 'is_recommend', 'start_time', 'deal_status', 'enddate', 'loantype', 'create_time', 'update_time', 'buy_count', 'success_time', 'repay_start_time', 'last_repay_time', 'next_repay_time', 'bad_time'], 'integer'],
+        	//[['description', 'seo_title', 'seo_keyword', 'seo_description'], 'string'],
+        	//[['borrow_amount', 'min_loan_money', 'max_loan_money', 'rate', 'services_fee', 'load_money', 'repay_money'], 'number'],
+        	//[['name'], 'string', 'max' => 255],
         ];
     }
 

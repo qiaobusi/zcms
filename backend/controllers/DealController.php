@@ -39,9 +39,7 @@ class DealController extends BaseCenterController
 	public function actionAdd()
 	{
 		$dealCates = DealCate::findAll(['is_effect' => 1]);
-		
 		$dealTypes = DealType::findAll(['is_effect' => 1]);
-		
 		$dealAgencys = DealAgency::findAll(['is_effect' => 1]);
 		
 		return $this->render('add', [
@@ -71,7 +69,7 @@ class DealController extends BaseCenterController
 				
 				$model->create_time = time();
 				$model->update_time = time();
-				
+				return ['status' => 0, 'info' => $model, 'data' => null];
 				$result = $model->insert();
 		
 				if ($result) {
@@ -79,6 +77,64 @@ class DealController extends BaseCenterController
 				} else {
 					$error = $model->firstErrors;
 					$info = count($error) > 0 ? CommonFunc::getErrorInfo($error) : '保存失败';
+					return ['status' => 0, 'info' => $info, 'data' => null];
+				}
+			} else {
+				$error = $model->firstErrors;
+				$info = CommonFunc::getErrorInfo($error);
+				return ['status' => 0, 'info' => $info, 'data' => null];
+			}
+		}
+	}
+	
+	public function actionEdit()
+	{
+		$id = Yii::$app->request->get('id');
+	
+		$dealCates = DealCate::findAll(['is_effect' => 1]);
+		$dealTypes = DealType::findAll(['is_effect' => 1]);
+		$dealAgencys = DealAgency::findAll(['is_effect' => 1]);
+		
+		$deal = Deal::findOne($id);
+	
+		return $this->render('edit', [
+				'id' => $id, 
+				'deal' => $deal,
+				'dealCates' => $dealCates,
+				'dealTypes' => $dealTypes,
+				'dealAgencys' => $dealAgencys,
+		]);
+	}
+	
+	public function actionSave()
+	{
+		if (Yii::$app->request->isAjax) {
+			Yii::$app->response->format = Response::FORMAT_JSON;
+	
+			$id = Yii::$app->request->post('id');
+			$data = Yii::$app->request->post();
+			if (!empty($data['Deal']['start_time'])) {
+				$array = explode(' ', $data['Deal']['start_time']);
+				$dateArray = explode('-', $array[0]);
+				$timeArray = explode(':', $array[1]);
+			
+				$data['Deal']['start_time'] = mktime($timeArray[0], $timeArray[1], 0, $dateArray[1], $dateArray[2], $dateArray[0]);
+			}
+	
+			$model = Deal::findOne($id);
+			$model->load($data);
+	
+			if ($model->validate()) {
+				
+				$model->update_time = time();
+				
+				$result = $model->update();
+	
+				if ($result) {
+					return ['status' => 1, 'info' => '修改成功', 'data' => null];
+				} else {
+					$error = $model->firstErrors;
+					$info = count($error) > 0 ? CommonFunc::getErrorInfo($error) : '修改失败';
 					return ['status' => 0, 'info' => $info, 'data' => null];
 				}
 			} else {

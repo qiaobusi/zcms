@@ -51,8 +51,8 @@ use yii\helpers\Url;
                   <label for="is_effect" class="col-sm-2 control-label">有效性</label>
                   <div class="col-sm-10">
                   	<select id="is_effect" class="form-control" name="DealAgency[is_effect]">
-	                    <option value="0" <?php if ($dealAgency->is_effect == 0) { ?>selected<?php } ?>>否</option>
-	                    <option value="1" <?php if ($dealAgency->is_effect == 1) { ?>selected<?php } ?>>是</option>
+	                    <option value="0" <?php if ($dealAgency->is_effect == 0): ?>selected="selected"<?php endif; ?>>否</option>
+	                    <option value="1" <?php if ($dealAgency->is_effect == 1): ?>selected="selected"<?php endif; ?>>是</option>
 	                </select>
                     <span class="help-block" style="color:#f00;"></span>
                   </div>
