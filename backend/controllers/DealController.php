@@ -69,7 +69,7 @@ class DealController extends BaseCenterController
 				
 				$model->create_time = time();
 				$model->update_time = time();
-				return ['status' => 0, 'info' => $model, 'data' => null];
+				
 				$result = $model->insert();
 		
 				if ($result) {

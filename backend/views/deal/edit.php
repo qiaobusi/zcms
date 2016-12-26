@@ -38,6 +38,7 @@ use yii\helpers\Url;
             </div>
             <form class="form-horizontal" id="form" action="<?php echo Url::to(['deal/save']); ?>">
             	<input name="_csrf-backend" type="hidden" id="_csrf" value="<?php echo Yii::$app->request->csrfToken; ?>">
+            	<input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
               <div class="box-body">
                 <div class="form-group">
                   <label for="user_id" class="col-sm-2 control-label">借款人</label>
@@ -179,7 +180,7 @@ use yii\helpers\Url;
 	                  <div class="input-group-addon">
 	                    <i class="fa fa-clock-o"></i>
 	                  </div>
-	                  <input type="text" class="form-control" id="start_time" name="Deal[start_time]" placeholder="yyyy-mm-dd hh:ii" value="<?php echo $deal->start_time; ?>">
+	                  <input type="text" class="form-control" id="start_time" name="Deal[start_time]" placeholder="yyyy-mm-dd hh:ii" value="<?php echo date('Y-m-d H:i', $deal->start_time); ?>">
                 	</div>
                     <span class="help-block" style="color:#f00;"></span>
                   </div>

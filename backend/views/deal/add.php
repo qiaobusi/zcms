@@ -174,7 +174,7 @@ use yii\helpers\Url;
                 </div>
                 <div class="form-group">
                   <label for="start_time" class="col-sm-2 control-label">开始投资时间</label>
-                  <div class="col-sm-10" style="padding-right:5px;">
+                  <div class="col-sm-10">
                     <div class="input-group">
 	                  <div class="input-group-addon">
 	                    <i class="fa fa-clock-o"></i>
