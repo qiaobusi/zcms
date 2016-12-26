@@ -274,7 +274,29 @@ use yii\helpers\Url;
 				    });
   	  		
 					$('#resetForm').click(function(){
-							
+						$('#user_id').val('');
+						$('#name').val('');
+						$('#cate_id option[value=0]').prop('selected', 'selected');
+						$('#type_id option[value=0]').prop('selected', 'selected');
+						$('#agency_id option[value=0]').prop('selected', 'selected');
+						$('#warrant option[value=0]').prop('selected', 'selected');
+						$('#description').val('');
+						$('#is_effect option[value=1]').prop('selected', 'selected');
+						$('#borrow_amount').val('');
+						$('#repay_time').val('');
+						$('#repay_time_type option[value=1]').prop('selected', 'selected');
+						$('#min_loan_money').val('');
+						$('#max_loan_money').val(0);
+						$('#rate').val('');
+						$('#is_recommend option[value=0]').prop('selected', 'selected');
+						$('#start_time').val('');
+						$('#deal_status option[value=1]').prop('selected', 'selected');
+						$('#enddate').val('');
+						$('#services_fee').val('');
+						$('#loantype option[value=0]').prop('selected', 'selected');
+						$('#seo_title').val('');
+						$('#seo_keyword').val('');
+						$('#seo_description').val('');
 					});
 					
 					$('#saveForm').click(function(){
@@ -288,6 +310,60 @@ use yii\helpers\Url;
 							if (name == '') {
 									$('#name').parents('.form-group').addClass('has-error');
 									$('#name').parent().find('.help-block').html('请输入借款名称');
+									return false;
+							}
+							var cate_id = $.trim($('#cate_id').val());
+							if (cate_id == 0) {
+									$('#cate_id').parents('.form-group').addClass('has-error');
+									$('#cate_id').parent().find('.help-block').html('请选择借款分类');
+									return false;
+							}
+							var type_id = $.trim($('#type_id').val());
+							if (type_id == 0) {
+									$('#type_id').parents('.form-group').addClass('has-error');
+									$('#type_id').parent().find('.help-block').html('请选择借款用途');
+									return false;
+							}
+							var borrow_amount = $.trim($('#borrow_amount').val());
+							if (borrow_amount == '') {
+									$('#borrow_amount').parents('.form-group').addClass('has-error');
+									$('#borrow_amount').parent().find('.help-block').html('请输入借款金额');
+									return false;
+							}
+							var repay_time = $.trim($('#repay_time').val());
+							if (repay_time == '') {
+									$('#repay_time').parents('.form-group').addClass('has-error');
+									$('#repay_time').parent().find('.help-block').html('请输入借款期限');
+									return false;
+							}
+							var min_loan_money = $.trim($('#repay_time').val());
+							if (min_loan_money == '') {
+									$('#min_loan_money').parents('.form-group').addClass('has-error');
+									$('#min_loan_money').parent().find('.help-block').html('请输入最低投资金额');
+									return false;
+							}
+							var rate = $.trim($('#rate').val());
+							if (rate == '') {
+									$('#rate').parents('.form-group').addClass('has-error');
+									$('#rate').parent().find('.help-block').html('请输入年化利率');
+									return false;
+							}
+							var start_time = $.trim($('#start_time').val());
+							if (start_time == '') {
+									$('#start_time').parents('.form-group').addClass('has-error');
+									$('#start_time').parent().find('.help-block').html('请输入开始投资时间');
+									return false;
+							}
+							var enddate = $.trim($('#enddate').val());
+							if (enddate == '') {
+									$('#enddate').parents('.form-group').addClass('has-error');
+									$('#enddate').parent().find('.help-block').html('请输入筹款期限');
+									return false;
+							}
+							var services_fee = $.trim($('#services_fee').val());
+							if (services_fee == '') {
+									$('#services_fee').parents('.form-group').addClass('has-error');
+									$('#services_fee').parent().find('.help-block').html('请输入服务费率');
 									return false;
 							}
 							

@@ -105,10 +105,10 @@ use yii\widgets\LinkPager;
 		
 		function del(id) {
 				delId = id;
-				showConfirm('删除', '确认删除？', deleteAuth);
+				showConfirm('删除', '确认删除？', deleteDeal);
 		}
 		
-		function deleteAuth() {
+		function deleteDeal() {
 				$.ajax({
 						url: '<?php echo Url::to(['deal/del']); ?>',
 						type: 'GET',

@@ -145,6 +145,23 @@ class DealController extends BaseCenterController
 		}
 	}
 	
+	public function actionDel()
+	{
+		if (Yii::$app->request->isAjax) {
+			Yii::$app->response->format = Response::FORMAT_JSON;
+	
+			$id = Yii::$app->request->get('id');
+	
+			$deal = Deal::findOne($id);
+			$result = $deal->delete();
+			if ($result) {
+				return ['status' => 1, 'info' => '删除成功', 'data' => null];
+			} else {
+				return ['status' => 0, 'info' => '删除失败', 'data' => null];
+			}
+		}
+	}
+	
 	
 	
 }
